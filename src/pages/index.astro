@@ -1,0 +1,179 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ProductCard from '../components/ProductCard.astro';
+import { products, site } from '../data/products';
+
+const benefitGroups = [
+  ['Natural ingredients', 'Made from renewable resources and modern mineral blends.'],
+  ['Fast clumping', 'Built for quick daily scooping and lower waste.'],
+  ['Low dust', 'Cleaner air for cats, humans, and nearby surfaces.'],
+  ['Gentle on paws', 'Soft everyday feel that sensitive cats adapt to easily.'],
+];
+
+const storySteps = [
+  ['Choose your formula', 'Pick tofu, cassava, bentonite, or the balanced mix.'],
+  ['Try it at home', 'Start with the discovery-friendly bag size and watch the transition.'],
+  ['Settle into routine', 'Subscribe, reorder, and keep cleanup feeling easy.'],
+];
+---
+
+<Layout title="Sigmö, naturally better for cats and home" description="Premium cat litter homepage with product lineup and brand story.">
+  <SiteHeader brand={site.brand} />
+
+  <main>
+    <section class="hero container">
+      <div class="hero-copy">
+        <div class="pill">Premium cat litter, reimagined</div>
+        <h1 class="section-title">{site.brand}</h1>
+        <p class="hero-tag">{site.tag}</p>
+        <p class="section-copy">{site.intro}</p>
+        <div class="hero-actions">
+          <a class="button" href="/products">Shop the range</a>
+          <a class="button secondary" href="#story">See our story</a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img src="/images/home-reference.jpg" alt="Sigmö homepage concept" />
+      </div>
+    </section>
+
+    <section class="products container">
+      <div class="products-heading">
+        <div>
+          <p class="eyebrow">our formulas</p>
+          <h2 class="section-title" style="font-size:clamp(2.4rem,4vw,4.6rem);">Four clean formulas for different homes.</h2>
+        </div>
+        <p class="section-copy">Use the homepage as the conversion front door, then let the product pages close the sale with clearer benefits and richer ingredient stories.</p>
+      </div>
+      <div class="product-grid">
+        {products.map((product) => <ProductCard product={product} />)}
+      </div>
+    </section>
+
+    <section class="benefits container" id="ingredients">
+      <div class="benefit-shell">
+        <div>
+          <h2 style="margin:0 0 12px;font-size:2rem;letter-spacing:-0.05em;">We believe a clean home and a happy cat start with better materials.</h2>
+          <p class="section-copy">Every formula is designed to feel calm in the home, reduce mess in the routine, and bring a more elevated look to everyday pet care.</p>
+        </div>
+        <div class="benefit-grid">
+          {benefitGroups.map(([title, text]) => (
+            <article>
+              <strong>{title}</strong>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="discovery container">
+      <div class="discovery-media">
+        <img src="/images/home-reference.jpg" alt="Discovery kit visual" />
+      </div>
+      <div class="discovery-copy">
+        <p class="eyebrow">discovery kit*</p>
+        <h2 class="section-title" style="font-size:clamp(2.5rem,4vw,4.8rem);">Find your best blend.</h2>
+        <p class="section-copy">Try the four hero formulas in one premium range. Compare texture, odor control, clumping, and comfort before choosing your full-size favorite.</p>
+        <a class="button" href="/products">Explore now</a>
+      </div>
+    </section>
+
+    <section class="story container" id="story">
+      <div>
+        <p class="eyebrow">how it works</p>
+        <h2 style="margin:0 0 18px;font-size:2.2rem;letter-spacing:-0.05em;">Loved by cats, approved by humans.</h2>
+        <div class="steps">
+          {storySteps.map(([title, text], index) => (
+            <article>
+              <span>{index + 1}</span>
+              <div>
+                <strong>{title}</strong>
+                <p>{text}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+      <div class="story-panel">
+        <img src="/images/product-mix.jpg" alt="Brand story panel" />
+        <div>
+          <h3>Our story</h3>
+          <p>Sigmö was built from a simple brief: the best litter should work hard without making the home feel clinical. We used calm palettes, ingredient-led storytelling, and product-first layouts to make pet care feel premium.</p>
+          <a href="/products" class="button secondary">Browse products</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq container" id="faq">
+      <div class="faq-heading">
+        <div>
+          <p class="eyebrow">frequently asked questions</p>
+          <h2 style="margin:0;font-size:2.2rem;letter-spacing:-0.05em;">Everything users ask before they switch.</h2>
+        </div>
+      </div>
+      <div class="faq-list">
+        {products[0].faqs.map((item) => (
+          <details>
+            <summary>{item.q}</summary>
+            <p>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter brand={site.brand} />
+</Layout>
+
+<style>
+  main { padding: 24px 0 0; }
+  .eyebrow { margin: 0 0 12px; color: #52604e; text-transform: lowercase; letter-spacing: 0.04em; }
+  .hero {
+    display: grid; grid-template-columns: 1fr 1.15fr; gap: 24px; align-items: stretch; padding-top: 24px;
+  }
+  .hero-copy, .hero-media, .benefit-shell, .story-panel {
+    border-radius: 36px; background: rgba(255,250,244,0.86); border: 1px solid rgba(255,255,255,0.88); box-shadow: var(--shadow);
+  }
+  .hero-copy { padding: 48px; display: flex; flex-direction: column; justify-content: center; }
+  .hero-media { overflow: hidden; min-height: 620px; }
+  .hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+  .hero-tag { font-size: clamp(1.4rem, 2vw, 2rem); margin: 14px 0 10px; }
+  .hero-actions { display: flex; gap: 14px; margin-top: 16px; flex-wrap: wrap; }
+  .products { padding: 56px 0; }
+  .products-heading, .faq-heading {
+    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px; align-items: end; margin-bottom: 24px;
+  }
+  .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .benefits { padding-bottom: 56px; }
+  .benefit-shell { display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px; padding: 28px; }
+  .benefit-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .benefit-grid article { padding: 18px; border-radius: 22px; background: var(--surface); border: 1px solid var(--line); }
+  .benefit-grid p, .steps p, .faq-list p { color: var(--muted); line-height: 1.6; }
+  .discovery { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px; padding-bottom: 56px; }
+  .discovery-media, .discovery-copy { border-radius: 32px; overflow: hidden; background: rgba(255,250,244,0.86); box-shadow: var(--shadow); }
+  .discovery-media img { width: 100%; height: 100%; object-fit: cover; }
+  .discovery-copy { padding: 40px; display: flex; flex-direction: column; justify-content: center; }
+  .story { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 24px; padding-bottom: 56px; }
+  .steps { display: grid; gap: 16px; }
+  .steps article { display: grid; grid-template-columns: 56px 1fr; gap: 16px; padding: 18px; border-radius: 24px; background: rgba(255,250,244,0.86); box-shadow: var(--shadow); }
+  .steps span { width: 56px; height: 56px; border-radius: 50%; display:flex;align-items:center;justify-content:center;background:#214523;color:#fff;font-weight:700; }
+  .story-panel { overflow: hidden; display: grid; grid-template-columns: 1fr 0.9fr; }
+  .story-panel img { width: 100%; height: 100%; object-fit: cover; }
+  .story-panel div { padding: 28px; display:flex;flex-direction:column;justify-content:center; }
+  .faq { padding-bottom: 40px; }
+  .faq-list { display: grid; gap: 14px; }
+  .faq-list details { padding: 22px 24px; border-radius: 22px; background: rgba(255,250,244,0.86); box-shadow: var(--shadow); }
+  .faq-list summary { cursor: pointer; font-weight: 700; }
+  @media (max-width: 1100px) {
+    .product-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero, .discovery, .story, .products-heading, .faq-heading, .benefit-shell { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 720px) {
+    .hero-copy, .discovery-copy { padding: 28px; }
+    .hero-media { min-height: 380px; }
+    .product-grid, .benefit-grid, .story-panel { grid-template-columns: 1fr; }
+  }
+</style>

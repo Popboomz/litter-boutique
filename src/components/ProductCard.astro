@@ -1,0 +1,45 @@
+---
+import type { Product } from '../data/products';
+const { product } = Astro.props as { product: Product };
+---
+
+<a class="product-card" href={`/products/${product.slug}`} style={`--accent:${product.accent};--accent-soft:${product.accentSoft};`}>
+  <div class="product-image-wrap">
+    <img src={product.heroImage} alt={`${product.name} litter`} />
+  </div>
+  <div class="product-body">
+    <div>
+      <p class="product-kicker">Sigmö</p>
+      <h3>{product.name} <span>{product.code}</span></h3>
+      <p class="product-subtitle">{product.subtitle}</p>
+    </div>
+    <div class="product-meta">
+      <span>{product.weight}</span>
+      <strong>${product.price.toFixed(2)}</strong>
+    </div>
+    <div class="product-cta">
+      <span class="qty">− 1 +</span>
+      <span class="button">Add to cart</span>
+    </div>
+  </div>
+</a>
+
+<style>
+  .product-card {
+    display: grid; gap: 18px; padding: 18px; border-radius: 28px; background: rgba(255,250,244,0.95);
+    border: 1px solid rgba(255,255,255,0.85); box-shadow: 0 20px 40px rgba(65,63,45,0.08);
+  }
+  .product-image-wrap {
+    border-radius: 24px; overflow: hidden; background: linear-gradient(180deg, var(--accent-soft), #fff8f0);
+    min-height: 280px;
+  }
+  .product-image-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .product-kicker { margin: 0 0 6px; color: var(--muted); }
+  .product-body h3 { margin: 0; font-size: 2rem; letter-spacing: -0.05em; }
+  .product-body h3 span { color: var(--accent); }
+  .product-subtitle { margin: 8px 0 18px; color: var(--muted); text-transform: capitalize; }
+  .product-meta, .product-cta { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .product-meta { padding-top: 12px; border-top: 1px solid var(--line); }
+  .qty { display: inline-flex; align-items: center; gap: 10px; min-height: 42px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--line); }
+  .product-cta .button { min-height: 42px; padding: 0 18px; }
+</style>

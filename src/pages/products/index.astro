@@ -1,0 +1,40 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { products, site } from '../../data/products';
+---
+
+<Layout title="Shop Sigmö formulas" description="Browse all Sigmö cat litter formulas.">
+  <SiteHeader brand={site.brand} />
+  <main class="container listing">
+    <section class="listing-hero">
+      <div>
+        <p class="eyebrow">shop all products</p>
+        <h1 class="section-title">Find the right litter for your cat and your home.</h1>
+        <p class="section-copy">Each formula shares the same premium visual system, but the use case is different. Tofu for soft paws, cassava for stronger plant-based odor control, bentonite for classic performance, and Mix for balanced everyday use.</p>
+      </div>
+      <div class="hero-panel">
+        <img src="/images/home-reference.jpg" alt="Shop overview" />
+      </div>
+    </section>
+
+    <section class="listing-grid">
+      {products.map((product) => <ProductCard product={product} />)}
+    </section>
+  </main>
+  <SiteFooter brand={site.brand} />
+</Layout>
+
+<style>
+  .listing { padding: 36px 0 0; }
+  .eyebrow { margin: 0 0 12px; color: #52604e; }
+  .listing-hero { display:grid; grid-template-columns: 0.95fr 1.05fr; gap:24px; align-items:center; margin-bottom:32px; }
+  .hero-panel { border-radius: 32px; overflow:hidden; box-shadow: var(--shadow); }
+  .hero-panel img { width:100%; height:100%; object-fit:cover; object-position:top; }
+  .listing-grid { display:grid; grid-template-columns: repeat(2, 1fr); gap:20px; padding-bottom:56px; }
+  @media (max-width: 900px) {
+    .listing-hero, .listing-grid { grid-template-columns: 1fr; }
+  }
+</style>

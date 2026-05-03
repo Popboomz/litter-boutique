@@ -1,0 +1,16 @@
+---
+const { brand = 'Sigmö' } = Astro.props;
+---
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/">{brand}</a>
+    <nav class="nav-links">
+      <a href="/">Shop</a>
+      <a href="/#ingredients">Ingredients</a>
+      <a href="/#story">Our Story</a>
+      <a href="/#faq">FAQ</a>
+    </nav>
+    <a class="pill" href="/products">Cart (0)</a>
+  </div>
+</header>

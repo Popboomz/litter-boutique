@@ -1,0 +1,86 @@
+---
+const {
+  title = 'Sigmö, premium cat litter',
+  description = 'Natural cat litter storefront with premium product pages.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.ico" />
+    <style is:global>
+      :root {
+        --bg: #f6f0e7;
+        --surface: #fffaf4;
+        --surface-2: #f2e8dc;
+        --text: #1f261c;
+        --muted: #657062;
+        --brand: #294b2b;
+        --line: rgba(41, 75, 43, 0.12);
+        --radius-xl: 32px;
+        --radius-lg: 24px;
+        --radius-md: 18px;
+        --container: 1180px;
+        --shadow: 0 24px 60px rgba(53, 60, 44, 0.1);
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        color: var(--text);
+        background: linear-gradient(180deg, #faf5ee 0%, var(--bg) 100%);
+      }
+      a { color: inherit; text-decoration: none; }
+      img { max-width: 100%; display: block; }
+      .container { width: min(var(--container), calc(100% - 32px)); margin: 0 auto; }
+      .pill {
+        display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px;
+        background: rgba(255,255,255,0.72); border: 1px solid rgba(255,255,255,0.66); backdrop-filter: blur(18px);
+      }
+      .button {
+        display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px;
+        padding: 0 22px; border-radius: 999px; border: none; background: var(--brand); color: #fff; font-weight: 700;
+      }
+      .button.secondary { background: transparent; color: var(--text); border: 1px solid var(--line); }
+      .section-title { font-size: clamp(2rem, 4vw, 4rem); line-height: 0.98; letter-spacing: -0.05em; margin: 0; }
+      .section-copy { color: var(--muted); font-size: 1.05rem; line-height: 1.7; }
+      header.nav {
+        position: sticky; top: 16px; z-index: 20; margin: 16px auto 0; width: min(var(--container), calc(100% - 24px));
+        background: rgba(255,250,244,0.84); border: 1px solid rgba(255,255,255,0.8); backdrop-filter: blur(18px);
+        border-radius: 999px; box-shadow: 0 14px 34px rgba(71, 66, 51, 0.08);
+      }
+      .nav-inner {
+        min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 0 18px;
+      }
+      .nav-links { display: flex; gap: 28px; color: #4f584b; font-size: 0.95rem; }
+      .brand { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.06em; }
+      footer.site-footer { padding: 32px 0 64px; }
+      .footer-card {
+        background: #214523; color: #f8f5ef; border-radius: 28px; padding: 28px; box-shadow: var(--shadow);
+      }
+      .footer-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr; gap: 24px; }
+      .footer-grid p, .footer-grid a { color: rgba(248,245,239,0.78); }
+      .newsletter {
+        display: grid; grid-template-columns: 1.1fr auto; gap: 10px; padding: 8px; border-radius: 999px; background: rgba(255,255,255,0.08);
+      }
+      .newsletter input {
+        border: 0; background: transparent; color: #fff; padding: 0 18px; font-size: 0.98rem; outline: none;
+      }
+      @media (max-width: 900px) {
+        .nav-links { display: none; }
+        .footer-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

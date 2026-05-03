@@ -1,0 +1,43 @@
+---
+const { brand = 'Sigmö' } = Astro.props;
+---
+
+<footer class="site-footer container">
+  <div class="footer-card">
+    <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:center;margin-bottom:28px;">
+      <div>
+        <p style="margin:0 0 8px;color:rgba(248,245,239,0.72);">stay in the loop</p>
+        <h3 style="margin:0;font-size:clamp(2rem,3vw,3rem);line-height:1;letter-spacing:-0.05em;">Get 10% off your first order.</h3>
+      </div>
+      <div class="newsletter">
+        <input placeholder="Enter your email" />
+        <a class="button" href="#">Subscribe</a>
+      </div>
+    </div>
+
+    <div class="footer-grid">
+      <div>
+        <div class="brand" style="color:#fff;margin-bottom:10px;">{brand}</div>
+        <p style="margin:0;max-width:260px;">good for cats, good for homes, good for earth.</p>
+      </div>
+      <div>
+        <strong>Shop</strong>
+        <p><a href="/products">All products</a></p>
+        <p><a href="/products">Bundles</a></p>
+        <p><a href="/products">Accessories</a></p>
+      </div>
+      <div>
+        <strong>Learn</strong>
+        <p><a href="/#ingredients">Ingredients</a></p>
+        <p><a href="/#story">Our story</a></p>
+        <p><a href="/#faq">FAQ</a></p>
+      </div>
+      <div>
+        <strong>Promise</strong>
+        <p>Natural-first formulas</p>
+        <p>Low mess everyday routines</p>
+        <p>Designed for modern homes</p>
+      </div>
+    </div>
+  </div>
+</footer>
