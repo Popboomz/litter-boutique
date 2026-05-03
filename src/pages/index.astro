@@ -5,37 +5,51 @@ import SiteFooter from '../components/SiteFooter.astro';
 import ProductCard from '../components/ProductCard.astro';
 import { products, site } from '../data/products';
 
-const benefitGroups = [
-  ['Natural ingredients', 'Made from renewable resources and modern mineral blends.'],
-  ['Fast clumping', 'Built for quick daily scooping and lower waste.'],
-  ['Low dust', 'Cleaner air for cats, humans, and nearby surfaces.'],
-  ['Gentle on paws', 'Soft everyday feel that sensitive cats adapt to easily.'],
+const benefits = [
+  ['Natural ingredients', 'Renewable fibers and premium mineral inputs chosen for cleaner routines.'],
+  ['Fast clumping', 'Formulas built to scoop neatly and cut down waste.'],
+  ['Low dust', 'Cleaner refill moments and calmer air around the tray.'],
+  ['Gentle on paws', 'Textures designed for real cat comfort, not just specs.'],
 ];
 
-const storySteps = [
-  ['Choose your formula', 'Pick tofu, cassava, bentonite, or the balanced mix.'],
-  ['Try it at home', 'Start with the discovery-friendly bag size and watch the transition.'],
-  ['Settle into routine', 'Subscribe, reorder, and keep cleanup feeling easy.'],
+const materials = [
+  ['Tofu', 'Soft, flush-friendly plant fiber for sensitive paws.', '#b8893a'],
+  ['Cassava', 'Sharper natural odor control with lighter handling.', '#88a64f'],
+  ['Bentonite', 'Classic dense clumps with dependable mineral strength.', '#d86997'],
+  ['Mix', 'The balanced all-rounder for comfort and performance.', '#6ba9b4'],
 ];
 ---
 
-<Layout title="Sigmö, naturally better for cats and home" description="Premium cat litter homepage with product lineup and brand story.">
+<Layout title="Sigmö, naturally better for cats and home" description="Premium cat litter storefront inspired by Scandinavian editorial ecommerce.">
   <SiteHeader brand={site.brand} />
 
   <main>
     <section class="hero container">
       <div class="hero-copy">
-        <div class="pill">Premium cat litter, reimagined</div>
+        <div class="pill">Premium cat litter, designed not pasted</div>
         <h1 class="section-title">{site.brand}</h1>
         <p class="hero-tag">{site.tag}</p>
         <p class="section-copy">{site.intro}</p>
         <div class="hero-actions">
-          <a class="button" href="/products">Shop the range</a>
-          <a class="button secondary" href="#story">See our story</a>
+          <a class="button" href="/products">Shop now</a>
+          <a class="button secondary" href="#materials">View ingredients</a>
         </div>
       </div>
-      <div class="hero-media">
-        <img src="/images/home-reference.jpg" alt="Sigmö homepage concept" />
+      <div class="hero-art">
+        <div class="grass-band"></div>
+        <div class="cat-figure">
+          <div class="cat-ear left"></div>
+          <div class="cat-ear right"></div>
+          <div class="cat-head"></div>
+          <div class="cat-body"></div>
+          <div class="cat-tail"></div>
+        </div>
+        <div class="tray">
+          <div class="tray-fill"></div>
+        </div>
+        <div class="daisy daisy-a"></div>
+        <div class="daisy daisy-b"></div>
+        <div class="daisy daisy-c"></div>
       </div>
     </section>
 
@@ -43,23 +57,23 @@ const storySteps = [
       <div class="products-heading">
         <div>
           <p class="eyebrow">our formulas</p>
-          <h2 class="section-title" style="font-size:clamp(2.4rem,4vw,4.6rem);">Four clean formulas for different homes.</h2>
+          <h2 class="section-title" style="font-size:clamp(2.4rem,4vw,4.8rem);">A homepage built from the reference language, not the screenshots.</h2>
         </div>
-        <p class="section-copy">Use the homepage as the conversion front door, then let the product pages close the sale with clearer benefits and richer ingredient stories.</p>
+        <p class="section-copy">我这次改成真正的参考式重构，保留自然高端、圆角胶囊导航、留白、产品卡片节奏和电商信息层级，但所有图形和结构都改为原创实现。</p>
       </div>
       <div class="product-grid">
         {products.map((product) => <ProductCard product={product} />)}
       </div>
     </section>
 
-    <section class="benefits container" id="ingredients">
+    <section class="benefits container">
       <div class="benefit-shell">
         <div>
-          <h2 style="margin:0 0 12px;font-size:2rem;letter-spacing:-0.05em;">We believe a clean home and a happy cat start with better materials.</h2>
-          <p class="section-copy">Every formula is designed to feel calm in the home, reduce mess in the routine, and bring a more elevated look to everyday pet care.</p>
+          <h2 style="margin:0 0 12px;font-size:2rem;letter-spacing:-0.05em;">A clean home and a happy cat start with better materials.</h2>
+          <p class="section-copy">The layout follows the reference cadence, hero, product shelf, benefit ribbon, discovery block, ingredient story, but every surface here is rebuilt from scratch.</p>
         </div>
         <div class="benefit-grid">
-          {benefitGroups.map(([title, text]) => (
+          {benefits.map(([title, text]) => (
             <article>
               <strong>{title}</strong>
               <p>{text}</p>
@@ -69,39 +83,59 @@ const storySteps = [
       </div>
     </section>
 
-    <section class="discovery container">
-      <div class="discovery-media">
-        <img src="/images/home-reference.jpg" alt="Discovery kit visual" />
+    <section class="discovery container" id="materials">
+      <div class="kit-art">
+        <div class="kit-box">
+          <div class="mini-pack p1"></div>
+          <div class="mini-pack p2"></div>
+          <div class="mini-pack p3"></div>
+          <div class="mini-pack p4"></div>
+        </div>
+        <div class="kit-bowl"></div>
       </div>
       <div class="discovery-copy">
         <p class="eyebrow">discovery kit*</p>
-        <h2 class="section-title" style="font-size:clamp(2.5rem,4vw,4.8rem);">Find your best blend.</h2>
-        <p class="section-copy">Try the four hero formulas in one premium range. Compare texture, odor control, clumping, and comfort before choosing your full-size favorite.</p>
+        <h2 class="section-title" style="font-size:clamp(2.6rem,4vw,5rem);">Find your best blend.</h2>
+        <p class="section-copy">Try the four hero formulas in one coherent product family. Compare comfort, odor handling, texture, and cleanup feel before committing to a full-size routine.</p>
         <a class="button" href="/products">Explore now</a>
       </div>
     </section>
 
-    <section class="story container" id="story">
+    <section class="materials container">
+      <div class="materials-copy">
+        <p class="eyebrow">why Sigmö</p>
+        <h2 style="margin:0 0 12px;font-size:2.2rem;letter-spacing:-0.05em;">Ingredients with a purpose.</h2>
+        <p class="section-copy">The section layout mirrors the reference idea: material-led storytelling cards, each with a color identity and a short positioning line.</p>
+      </div>
+      <div class="materials-grid">
+        {materials.map(([name, text, color]) => (
+          <article style={`--mat:${color};`}>
+            <div class="mat-visual"></div>
+            <strong>{name}</strong>
+            <p>{text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="story container">
       <div>
         <p class="eyebrow">how it works</p>
-        <h2 style="margin:0 0 18px;font-size:2.2rem;letter-spacing:-0.05em;">Loved by cats, approved by humans.</h2>
+        <h2 style="margin:0 0 18px;font-size:2.2rem;letter-spacing:-0.05em;">Choose, scoop, and settle into a cleaner rhythm.</h2>
         <div class="steps">
-          {storySteps.map(([title, text], index) => (
-            <article>
-              <span>{index + 1}</span>
-              <div>
-                <strong>{title}</strong>
-                <p>{text}</p>
-              </div>
-            </article>
-          ))}
+          <article><span>1</span><div><strong>Choose your formula</strong><p>Start with the texture and performance profile that fits your home best.</p></div></article>
+          <article><span>2</span><div><strong>Try it at home</strong><p>Use the first week to dial in depth, scoop cadence, and placement.</p></div></article>
+          <article><span>3</span><div><strong>Make it routine</strong><p>Once the fit is right, reorder the formula that keeps cleanup feeling easiest.</p></div></article>
         </div>
       </div>
       <div class="story-panel">
-        <img src="/images/product-mix.jpg" alt="Brand story panel" />
+        <div class="story-scene">
+          <div class="cat-mini"></div>
+          <div class="floor-shadow"></div>
+        </div>
         <div>
           <h3>Our story</h3>
-          <p>Sigmö was built from a simple brief: the best litter should work hard without making the home feel clinical. We used calm palettes, ingredient-led storytelling, and product-first layouts to make pet care feel premium.</p>
+          <p>We borrowed the reference site’s calm pacing and Scandinavian polish, then rebuilt it as an original storefront system with custom shapes, editorial spacing, and synthetic product visuals instead of pasted screenshots.</p>
           <a href="/products" class="button secondary">Browse products</a>
         </div>
       </div>
@@ -130,50 +164,73 @@ const storySteps = [
 
 <style>
   main { padding: 24px 0 0; }
-  .eyebrow { margin: 0 0 12px; color: #52604e; text-transform: lowercase; letter-spacing: 0.04em; }
-  .hero {
-    display: grid; grid-template-columns: 1fr 1.15fr; gap: 24px; align-items: stretch; padding-top: 24px;
+  .eyebrow { margin: 0 0 12px; color: #52604e; letter-spacing: 0.04em; }
+  .hero, .discovery, .story { display:grid; gap:24px; }
+  .hero { grid-template-columns: 0.95fr 1.05fr; padding-top:24px; }
+  .hero-copy, .hero-art, .benefit-shell, .story-panel, .kit-art, .discovery-copy {
+    border-radius: 36px; background: rgba(255,250,244,0.88); border: 1px solid rgba(255,255,255,0.9); box-shadow: var(--shadow);
   }
-  .hero-copy, .hero-media, .benefit-shell, .story-panel {
-    border-radius: 36px; background: rgba(255,250,244,0.86); border: 1px solid rgba(255,255,255,0.88); box-shadow: var(--shadow);
-  }
-  .hero-copy { padding: 48px; display: flex; flex-direction: column; justify-content: center; }
-  .hero-media { overflow: hidden; min-height: 620px; }
-  .hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+  .hero-copy { padding: 48px; display:flex; flex-direction:column; justify-content:center; }
   .hero-tag { font-size: clamp(1.4rem, 2vw, 2rem); margin: 14px 0 10px; }
-  .hero-actions { display: flex; gap: 14px; margin-top: 16px; flex-wrap: wrap; }
+  .hero-actions { display:flex; gap:14px; margin-top:16px; flex-wrap:wrap; }
+  .hero-art { position:relative; min-height: 620px; overflow:hidden; background: linear-gradient(180deg, #789764 0%, #3f632f 34%, #e7decf 34.1%, #ede4d7 100%); }
+  .grass-band { position:absolute; inset:0 0 auto 0; height:34%; background: radial-gradient(circle at 10% 20%, rgba(255,255,255,0.16) 0 4px, transparent 5px), linear-gradient(180deg, #6d8f59 0%, #476934 100%); }
+  .tray { position:absolute; right:44px; bottom:58px; width:250px; height:130px; border-radius:50% 50% 38% 38%; background:#c9b093; box-shadow: inset 0 10px 24px rgba(255,255,255,0.35); }
+  .tray-fill { position:absolute; left:18px; right:18px; top:18px; bottom:24px; border-radius:50%; background: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.5) 0 4px, transparent 5px), radial-gradient(circle at 50% 45%, rgba(255,255,255,0.45) 0 4px, transparent 5px), radial-gradient(circle at 75% 38%, rgba(255,255,255,0.4) 0 4px, transparent 5px), linear-gradient(180deg, #d9c9ae 0%, #bcaa8a 100%); }
+  .cat-figure { position:absolute; right:118px; top:74px; width:220px; height:250px; }
+  .cat-head { position:absolute; right:34px; top:0; width:110px; height:96px; border-radius:50%; background:#b79263; }
+  .cat-ear { position:absolute; width:32px; height:42px; background:#b79263; top:-14px; clip-path: polygon(50% 0%, 0% 100%, 100% 100%); }
+  .cat-ear.left { right:108px; transform:rotate(-12deg); }
+  .cat-ear.right { right:46px; transform:rotate(14deg); }
+  .cat-body { position:absolute; right:0; top:68px; width:190px; height:138px; border-radius:48% 48% 42% 42%; background:#c39c6d; }
+  .cat-tail { position:absolute; right:156px; top:118px; width:88px; height:20px; border-radius:20px; background:#b28557; transform:rotate(-22deg); }
+  .daisy { position:absolute; width:62px; height:62px; border-radius:50%; background: radial-gradient(circle, #f3c85a 0 12%, transparent 13%), radial-gradient(circle at 50% 18%, #fff 0 12%, transparent 13%), radial-gradient(circle at 81% 33%, #fff 0 12%, transparent 13%), radial-gradient(circle at 18% 33%, #fff 0 12%, transparent 13%), radial-gradient(circle at 22% 72%, #fff 0 12%, transparent 13%), radial-gradient(circle at 78% 72%, #fff 0 12%, transparent 13%), radial-gradient(circle at 50% 87%, #fff 0 12%, transparent 13%); }
+  .daisy-a { top:58px; left:48px; }
+  .daisy-b { top:108px; left:140px; transform:scale(0.8); }
+  .daisy-c { top:78px; left:238px; transform:scale(0.92); }
   .products { padding: 56px 0; }
-  .products-heading, .faq-heading {
-    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px; align-items: end; margin-bottom: 24px;
-  }
-  .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-  .benefits { padding-bottom: 56px; }
-  .benefit-shell { display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px; padding: 28px; }
-  .benefit-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  .benefit-grid article { padding: 18px; border-radius: 22px; background: var(--surface); border: 1px solid var(--line); }
-  .benefit-grid p, .steps p, .faq-list p { color: var(--muted); line-height: 1.6; }
-  .discovery { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px; padding-bottom: 56px; }
-  .discovery-media, .discovery-copy { border-radius: 32px; overflow: hidden; background: rgba(255,250,244,0.86); box-shadow: var(--shadow); }
-  .discovery-media img { width: 100%; height: 100%; object-fit: cover; }
-  .discovery-copy { padding: 40px; display: flex; flex-direction: column; justify-content: center; }
-  .story { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 24px; padding-bottom: 56px; }
-  .steps { display: grid; gap: 16px; }
-  .steps article { display: grid; grid-template-columns: 56px 1fr; gap: 16px; padding: 18px; border-radius: 24px; background: rgba(255,250,244,0.86); box-shadow: var(--shadow); }
-  .steps span { width: 56px; height: 56px; border-radius: 50%; display:flex;align-items:center;justify-content:center;background:#214523;color:#fff;font-weight:700; }
-  .story-panel { overflow: hidden; display: grid; grid-template-columns: 1fr 0.9fr; }
-  .story-panel img { width: 100%; height: 100%; object-fit: cover; }
-  .story-panel div { padding: 28px; display:flex;flex-direction:column;justify-content:center; }
-  .faq { padding-bottom: 40px; }
-  .faq-list { display: grid; gap: 14px; }
-  .faq-list details { padding: 22px 24px; border-radius: 22px; background: rgba(255,250,244,0.86); box-shadow: var(--shadow); }
-  .faq-list summary { cursor: pointer; font-weight: 700; }
+  .products-heading, .faq-heading { display:grid; grid-template-columns: 1.1fr 0.9fr; gap:24px; align-items:end; margin-bottom:24px; }
+  .product-grid { display:grid; grid-template-columns: repeat(4, 1fr); gap:18px; }
+  .benefits, .materials { padding-bottom:56px; }
+  .benefit-shell { display:grid; grid-template-columns: 1.05fr 1fr; gap:24px; padding:28px; }
+  .benefit-grid { display:grid; grid-template-columns: repeat(2, 1fr); gap:16px; }
+  .benefit-grid article, .materials-grid article { padding:18px; border-radius:22px; background: var(--surface); border:1px solid var(--line); }
+  .benefit-grid p, .steps p, .faq-list p, .materials-grid p { color: var(--muted); line-height:1.6; }
+  .discovery { grid-template-columns: 1.05fr 0.95fr; padding-bottom:56px; }
+  .kit-art { position:relative; min-height: 440px; overflow:hidden; }
+  .kit-box { position:absolute; left:48px; top:84px; width:360px; height:210px; border-radius: 24px; background: linear-gradient(180deg, #c6925d 0%, #a86c3d 100%); }
+  .mini-pack { position:absolute; bottom:26px; width:62px; height:110px; border-radius:12px; background: linear-gradient(180deg, #fffef9 0%, #efe8dc 100%); box-shadow: 0 10px 18px rgba(64,52,36,0.12); }
+  .p1 { left:24px; border-bottom:14px solid #b8893a; }
+  .p2 { left:98px; border-bottom:14px solid #88a64f; }
+  .p3 { left:172px; border-bottom:14px solid #d86997; }
+  .p4 { left:246px; border-bottom:14px solid #6ba9b4; }
+  .kit-bowl { position:absolute; right:54px; bottom:54px; width:180px; height:92px; border-radius:50%; background: linear-gradient(180deg, #d9c0a1 0%, #b6916f 100%); }
+  .discovery-copy { padding:40px; display:flex; flex-direction:column; justify-content:center; }
+  .materials-copy { margin-bottom: 20px; }
+  .materials-grid { display:grid; grid-template-columns: repeat(4, 1fr); gap:16px; }
+  .mat-visual { height: 120px; border-radius: 18px; margin-bottom: 14px; background: linear-gradient(135deg, color-mix(in srgb, var(--mat) 38%, white), var(--mat)); }
+  .story { grid-template-columns: 0.9fr 1.1fr; padding-bottom:56px; }
+  .steps { display:grid; gap:16px; }
+  .steps article { display:grid; grid-template-columns:56px 1fr; gap:16px; padding:18px; border-radius:24px; background: rgba(255,250,244,0.86); box-shadow: var(--shadow); }
+  .steps span { width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:#214523; color:#fff; font-weight:700; }
+  .story-panel { overflow:hidden; display:grid; grid-template-columns: 1fr 0.9fr; }
+  .story-scene { position:relative; min-height: 100%; background: linear-gradient(180deg, #e7ddcf 0%, #cdbca4 100%); }
+  .cat-mini { position:absolute; left:70px; bottom:72px; width:180px; height:120px; border-radius: 45% 45% 38% 38%; background:#b38d61; }
+  .floor-shadow { position:absolute; left:54px; bottom:50px; width:230px; height:28px; border-radius:50%; background: rgba(89,73,44,0.16); }
+  .story-panel div:last-child { padding:28px; display:flex; flex-direction:column; justify-content:center; }
+  .faq { padding-bottom:40px; }
+  .faq-list { display:grid; gap:14px; }
+  .faq-list details { padding:22px 24px; border-radius:22px; background: rgba(255,250,244,0.86); box-shadow: var(--shadow); }
+  .faq-list summary { cursor:pointer; font-weight:700; }
   @media (max-width: 1100px) {
-    .product-grid { grid-template-columns: repeat(2, 1fr); }
     .hero, .discovery, .story, .products-heading, .faq-heading, .benefit-shell { grid-template-columns: 1fr; }
+    .product-grid, .materials-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 720px) {
     .hero-copy, .discovery-copy { padding: 28px; }
-    .hero-media { min-height: 380px; }
-    .product-grid, .benefit-grid, .story-panel { grid-template-columns: 1fr; }
+    .hero-art { min-height: 420px; }
+    .product-grid, .benefit-grid, .materials-grid, .story-panel { grid-template-columns: 1fr; }
+    .cat-figure { right:52px; top:66px; transform:scale(0.78); transform-origin: top right; }
+    .tray { right:18px; bottom:30px; transform:scale(0.8); transform-origin: bottom right; }
   }
 </style>

@@ -17,13 +17,25 @@ const related = products.filter((item) => item.slug !== product.slug).slice(0, 3
   <main class="container product-page" style={`--accent:${product.accent};--accent-soft:${product.accentSoft};`}>
     <section class="product-hero">
       <div class="gallery-card">
-        <div class="gallery-main">
-          <img src={product.heroImage} alt={`${product.name} product image`} />
+        <div class="stage">
+          <div class="bag">
+            <div class="bag-top"></div>
+            <div class="bag-label">
+              <p>Sigmö</p>
+              <strong>+{product.name}</strong>
+              <span>{product.code}</span>
+            </div>
+            <div class="bag-foot">{product.subtitle}</div>
+          </div>
+          <div class="material a"></div>
+          <div class="material b"></div>
+          <div class="grains"></div>
         </div>
         <div class="thumbs">
-          {product.gallery.map((image) => (
-            <div class="thumb"><img src={image} alt="gallery thumbnail" /></div>
-          ))}
+          <div class="thumb"><div class="mini bag-mini"></div></div>
+          <div class="thumb"><div class="mini bowl-mini"></div></div>
+          <div class="thumb"><div class="mini material-mini"></div></div>
+          <div class="thumb"><div class="mini cat-mini"></div></div>
         </div>
       </div>
 
@@ -76,15 +88,15 @@ const related = products.filter((item) => item.slug !== product.slug).slice(0, 3
 
     <section class="story-block">
       <div>
-        <p class="eyebrow">From {product.name.toLowerCase()}, for a better tomorrow.</p>
+        <p class="eyebrow">{product.visual.motif}</p>
         <h2>{product.description}</h2>
         <div class="ingredient-pills">
           {product.ingredients.map((item) => <span>{item}</span>)}
         </div>
       </div>
       <div class="story-images">
-        <img src={product.heroImage} alt="Product detail close-up" />
-        <img src="/images/home-reference.jpg" alt="Lifestyle crop" />
+        <div class="story-art alt-a"></div>
+        <div class="story-art alt-b"></div>
       </div>
     </section>
 
@@ -134,8 +146,11 @@ const related = products.filter((item) => item.slug !== product.slug).slice(0, 3
       </div>
       <div class="related-grid">
         {related.map((item) => (
-          <a class="related-card" href={`/products/${item.slug}`}>
-            <img src={item.heroImage} alt={item.name} />
+          <a class="related-card" href={`/products/${item.slug}`} style={`--card-accent:${item.accent};--card-soft:${item.accentSoft};`}>
+            <div class="related-art">
+              <div class="related-bag"></div>
+              <div class="related-grains"></div>
+            </div>
             <div>
               <strong>{site.brand} {item.code}</strong>
               <p>${item.price.toFixed(2)}</p>
@@ -157,12 +172,39 @@ const related = products.filter((item) => item.slug !== product.slug).slice(0, 3
     background: rgba(255,250,244,0.9); border: 1px solid rgba(255,255,255,0.9); box-shadow: var(--shadow);
   }
   .gallery-card, .purchase-card, .story-block, .how-to, .review-card, .related-card { border-radius: 32px; }
-  .gallery-main { overflow:hidden; border-radius: 28px; background: linear-gradient(180deg, var(--accent-soft), #fff8f0); }
-  .gallery-main img { width:100%; height:100%; object-fit:cover; object-position:top; }
   .gallery-card { padding:20px; }
-  .thumbs { display:grid; grid-template-columns: repeat(2, 1fr); gap:12px; margin-top:12px; }
-  .thumb { border-radius: 18px; overflow:hidden; min-height:120px; background:#f4eadf; }
-  .thumb img { width:100%; height:100%; object-fit:cover; object-position:top; }
+  .stage {
+    position:relative; min-height:460px; border-radius:28px; overflow:hidden; background: linear-gradient(180deg, #fcf7f0 0%, var(--accent-soft) 100%);
+  }
+  .bag {
+    position:absolute; left:34px; top:24px; width:48%; height:308px; border-radius:24px 24px 30px 30px; background: linear-gradient(180deg, #fffefb 0%, #f1e7da 100%); box-shadow: 0 20px 34px rgba(84,70,45,0.12);
+  }
+  .bag-top { height:56px; border-bottom:1px solid rgba(47,57,38,0.08); background: linear-gradient(180deg, #fffdf8 0%, #f5ede4 100%); }
+  .bag-label { margin:20px; padding:18px; border-radius:18px; background: linear-gradient(180deg, var(--accentSoft, var(--accent-soft)), rgba(255,255,255,0.72)); }
+  .bag-label p, .bag-foot { margin:0; color:#5f675d; }
+  .bag-label strong { display:block; margin-top:6px; font-size:1.6rem; letter-spacing:-0.04em; }
+  .bag-label span { display:block; margin-top:10px; font-size:2.4rem; font-weight:800; color:var(--accent); letter-spacing:-0.08em; }
+  .bag-foot { margin:0 20px; text-transform:capitalize; }
+  .grains {
+    position:absolute; right:34px; bottom:30px; width:38%; height:120px; border-radius:50% 50% 30px 30px;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(255,255,255,0.66) 0 5px, transparent 6px),
+      radial-gradient(circle at 38% 52%, rgba(255,255,255,0.55) 0 4px, transparent 5px),
+      radial-gradient(circle at 58% 32%, rgba(255,255,255,0.6) 0 4px, transparent 5px),
+      radial-gradient(circle at 70% 55%, rgba(255,255,255,0.58) 0 4px, transparent 5px),
+      radial-gradient(circle at 82% 35%, rgba(255,255,255,0.5) 0 4px, transparent 5px),
+      linear-gradient(180deg, #d8cab0 0%, #bcac8e 100%);
+  }
+  .material { position:absolute; background: color-mix(in srgb, var(--accent) 55%, #8a704d); opacity:0.5; }
+  .material.a { left:30px; bottom:56px; width:60px; height:60px; border-radius:14px; transform:rotate(-9deg); }
+  .material.b { left:78px; bottom:26px; width:44px; height:44px; border-radius:50%; }
+  .thumbs { display:grid; grid-template-columns: repeat(4, 1fr); gap:12px; margin-top:12px; }
+  .thumb { min-height:120px; border-radius:18px; background: linear-gradient(180deg, #faf2e6 0%, #efe6d7 100%); position:relative; overflow:hidden; }
+  .mini { position:absolute; inset:20px; border-radius:16px; }
+  .bag-mini { background: linear-gradient(180deg, #fff 0%, var(--accent-soft) 100%); }
+  .bowl-mini { background: radial-gradient(circle at 50% 45%, #d8cab0 0 34%, #bfaa8a 35% 100%); }
+  .material-mini { background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 50%, #f1ecdf), var(--accent)); }
+  .cat-mini { background: linear-gradient(180deg, #c7a073 0%, #a87d50 100%); border-radius:44% 44% 38% 38%; }
   .purchase-card { padding:30px; }
   h1 { margin: 0; font-size: clamp(2.5rem,4vw,4.6rem); line-height:0.95; letter-spacing:-0.06em; }
   h1 span { color: var(--accent); }
@@ -175,9 +217,7 @@ const related = products.filter((item) => item.slug !== product.slug).slice(0, 3
   .actions { display:grid; gap:12px; }
   .subscribe { justify-content:center; }
   .quick-features { display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
-  .quick-features span, .ingredient-pills span {
-    padding:10px 14px; border-radius:999px; background:var(--accent-soft); color:#27412a; font-weight:600;
-  }
+  .quick-features span, .ingredient-pills span { padding:10px 14px; border-radius:999px; background:var(--accent-soft); color:#27412a; font-weight:600; }
   .trust-row, .feature-row, .how-grid, .related-grid { display:grid; gap:16px; }
   .trust-row { grid-template-columns: repeat(3, 1fr); margin:24px 0; }
   .trust-row article, .feature-row article { padding:20px; border-radius:24px; }
@@ -186,7 +226,9 @@ const related = products.filter((item) => item.slug !== product.slug).slice(0, 3
   .story-block h2 { font-size: clamp(1.8rem,2.4vw,2.8rem); line-height:1.2; letter-spacing:-0.04em; }
   .ingredient-pills { display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
   .story-images { display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
-  .story-images img { border-radius:24px; width:100%; height:100%; object-fit:cover; object-position:top; }
+  .story-art { border-radius:24px; min-height:280px; background: linear-gradient(180deg, var(--accent-soft), #f8f1e5); }
+  .story-art.alt-a { background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 28%, white), #f7efdf); }
+  .story-art.alt-b { background: radial-gradient(circle at 45% 45%, #d8cab0 0 20%, #beaa8a 21% 48%, #efe5d7 49% 100%); }
   .how-to, .faq-block, .review-block, .related-block { margin-bottom:24px; }
   .how-to { padding:24px; }
   .how-grid { grid-template-columns: repeat(4, 1fr); }
@@ -200,12 +242,14 @@ const related = products.filter((item) => item.slug !== product.slug).slice(0, 3
   .faq-list summary { cursor:pointer; font-weight:700; }
   .related-grid { grid-template-columns: repeat(3, 1fr); }
   .related-card { padding:16px; display:grid; gap:16px; }
-  .related-card img { border-radius:22px; width:100%; height:260px; object-fit:cover; object-position:top; background:linear-gradient(180deg, var(--accent-soft), #fff8f0); }
+  .related-art { position:relative; height:260px; border-radius:22px; background: linear-gradient(180deg, var(--card-soft), #fff9f0); overflow:hidden; }
+  .related-bag { position:absolute; left:18px; top:18px; width:46%; height:180px; border-radius:18px; background: linear-gradient(180deg, #fff 0%, color-mix(in srgb, var(--card-soft) 70%, #f5eada) 100%); }
+  .related-grains { position:absolute; right:18px; bottom:18px; width:36%; height:78px; border-radius:50% 50% 24px 24px; background: linear-gradient(180deg, #d8cab0 0%, #bcac8e 100%); }
   @media (max-width: 1100px) {
     .product-hero, .story-block, .trust-row, .feature-row, .how-grid, .related-grid { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 760px) {
-    .product-hero, .selectors, .story-block, .trust-row, .feature-row, .how-grid, .related-grid, .story-images { grid-template-columns: 1fr; }
+    .product-hero, .selectors, .story-block, .trust-row, .feature-row, .how-grid, .related-grid, .story-images, .thumbs { grid-template-columns: 1fr; }
     .review-heading { flex-direction:column; align-items:start; }
   }
 </style>
